@@ -1,22 +1,9 @@
 <h1 align="center">Multi-Region Disaster Recovery on AWS — Enterprise Grade (Pilot Light)</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform" />
-  <img src="https://img.shields.io/badge/AWS-ECS%20Fargate-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="ECS Fargate" />
-  <img src="https://img.shields.io/badge/AWS-ALB-8C4FFF?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="ALB" />
-  <img src="https://img.shields.io/badge/AWS-RDS%20PostgreSQL-527FFF?style=for-the-badge&logo=postgresql&logoColor=white" alt="RDS PostgreSQL" />
-  <img src="https://img.shields.io/badge/AWS-DynamoDB-4053D6?style=for-the-badge&logo=amazondynamodb&logoColor=white" alt="DynamoDB" />
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/badge/DR%20Pattern-Pilot%20Light-orange?style=for-the-badge" alt="Pilot Light" />
   <img src="https.shields.io/badge/Regions-eu--central--1%20%2B%20eu--west--1-blue?style=for-the-badge" alt="2 Regions" />
   <img src="https://img.shields.io/badge/Resources-66-success?style=for-the-badge" alt="66 Resources" />
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/AWS%20Solutions%20Architect-Professional-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS SA Pro" />
-  <img src="https://img.shields.io/badge/AWS%20Security-Specialty-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=FF9900" alt="AWS Security" />
 </p>
 
 ---

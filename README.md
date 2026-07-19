@@ -1,10 +1,7 @@
 <h1 align="center">Multi-Region Disaster Recovery on AWS — Enterprise Grade (Pilot Light)</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/DR%20Pattern-Pilot%20Light-orange?style=for-the-badge" alt="Pilot Light" />
-  <img src="https.shields.io/badge/Regions-eu--central--1%20%2B%20eu--west--1-blue?style=for-the-badge" alt="2 Regions" />
-  <img src="https://img.shields.io/badge/Resources-66-success?style=for-the-badge" alt="66 Resources" />
-</p>
+  </p>
 
 ---
 

@@ -45,7 +45,8 @@ I built an enterprise-grade multi-region disaster recovery infrastructure on AWS
 ## Architecture
 
 ```
-<img width="985" height="841" alt="Screenshot 2026-07-22 085534" src="https://github.com/user-attachments/assets/ae34dd5f-731a-4738-b629-dc2f22ab26f4" />
+
+<img width="985" height="841" alt="Screenshot 2026-07-22 085534" src="https://github.com/user-attachments/assets/f49f7290-07d8-4f93-a773-3c93f3d55d34" />
 
 
 ```

@@ -45,39 +45,9 @@ I built an enterprise-grade multi-region disaster recovery infrastructure on AWS
 ## Architecture
 
 ```
-┌──────────────────────────────────────────┐    ┌──────────────────────────────────────────┐
-│         PRIMARY REGION                    │    │         SECONDARY REGION                 │
-│         eu-central-1 (Frankfurt)          │    │         eu-west-1 (Ireland)              │
-│                                           │    │                                          │
-│  ┌─────────────┐                         │    │  ┌─────────────┐                         │
-│  │     ALB     │◄─── HTTP traffic        │    │  │     ALB     │◄─── HTTP traffic        │
-│  │  (Active)   │                         │    │  │  (Active)   │                         │
-│  └──────┬──────┘                         │    │  └──────┬──────┘                         │
-│         │                                 │    │         │                                 │
-│  ┌──────┴──────┐                         │    │  ┌──────┴──────┐                         │
-│  │  ECS        │                         │    │  │  ECS        │                         │
-│  │  Fargate    │                         │    │  │  Fargate    │                         │
-│  │  (1 task)   │                         │    │  │  (0 tasks)  │  ◄── Pilot Light        │
-│  └──────┬──────┘                         │    │  └─────────────┘                         │
-│         │                                 │    │                                          │
-│  ┌──────┴──────┐    ┌──────────────┐    │    │  ┌──────────────┐    ┌──────────────┐   │
-│  │  RDS        │    │  DynamoDB    │    │    │  │  RDS         │    │  DynamoDB    │   │
-│  │  PostgreSQL │    │  Sessions    │    │    │  │  PostgreSQL  │    │  Sessions    │   │
-│  │  (t3.micro) │    │  (On-Demand) │    │    │  │  (t3.micro)  │    │  (On-Demand) │   │
-│  └─────────────┘    └──────────────┘    │    │  └──────────────┘    └──────────────┘   │
-│                                           │    │                                          │
-│  ┌──────────────┐    ┌──────────────┐     │    │  ┌──────────────┐                        │
-│  │  NAT Gateway │    │  S3 Bucket   │     │    │  │  NAT Gateway │                        │
-│  │  (Public)    │    │  (Static)    │     │    │  │  (Public)    │                        │
-│  └──────────────┘    └──────────────┘     │    │  └──────────────┘                        │
-│                                           │    │                                          │
-│  VPC: 10.0.0.0/16                       │    │  VPC: 10.0.0.0/16                       │
-│  AZs: eu-central-1a, eu-central-1b      │    │  AZs: eu-west-1a, eu-west-1b            │
-│  Public:  10.0.1.0/24, 10.0.2.0/24     │    │  Public:  10.0.1.0/24, 10.0.2.0/24     │
-│  Private: 10.0.3.0/24, 10.0.4.0/24     │    │  Private: 10.0.3.0/24, 10.0.4.0/24     │
-│                                           │    │                                          │
-│  SNS: drfinal2026-failover-topic          │    │  SNS: drfinal2026-failover-topic        │
-└──────────────────────────────────────────┘    └──────────────────────────────────────────┘
+<img width="985" height="841" alt="Screenshot 2026-07-22 085534" src="https://github.com/user-attachments/assets/ae34dd5f-731a-4738-b629-dc2f22ab26f4" />
+
+
 ```
 
 **The Pilot Light concept:** The secondary region has every piece of infrastructure the primary has — VPC, subnets, ALB, ECS cluster, RDS, DynamoDB, NAT Gateway, S3 — but the ECS service is scaled to **zero tasks**. No compute running means no compute billing. When failover is needed, a Lambda function (or manual intervention) scales the secondary ECS service from 0 to 3 tasks, and the ALB starts routing traffic within minutes.

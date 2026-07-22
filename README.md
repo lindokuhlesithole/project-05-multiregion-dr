@@ -44,12 +44,8 @@ I built an enterprise-grade multi-region disaster recovery infrastructure on AWS
 
 ## Architecture
 
-```
+<img width="985" height="841" alt="Screenshot 2026-07-22 085534" src="https://github.com/user-attachments/assets/14807b76-71f2-4a6d-91e8-8586495b2a09" />
 
-<img width="985" height="841" alt="Screenshot 2026-07-22 085534" src="https://github.com/user-attachments/assets/f49f7290-07d8-4f93-a773-3c93f3d55d34" />
-
-
-```
 
 **The Pilot Light concept:** The secondary region has every piece of infrastructure the primary has — VPC, subnets, ALB, ECS cluster, RDS, DynamoDB, NAT Gateway, S3 — but the ECS service is scaled to **zero tasks**. No compute running means no compute billing. When failover is needed, a Lambda function (or manual intervention) scales the secondary ECS service from 0 to 3 tasks, and the ALB starts routing traffic within minutes.
 
